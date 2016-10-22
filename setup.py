@@ -9,8 +9,6 @@ setup(
     author_email = '',
     url = 'https://github.com/peluche/jiongtu',
     download_url = 'https://github.com/peluche/jiongtu/tarball/0.1',
-    install_requires = [
-        'flask',
-    ],
+    install_requires = ['flask'],
     keywords = [],
     classifiers = [])

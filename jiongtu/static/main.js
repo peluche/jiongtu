@@ -25,8 +25,10 @@ function getData() {
     request.onload = function() {
         var response = JSON.parse(request.responseText);
         images = response['images'];
-        if (images.length > 0) {
-            draw(images[0]);
+        if (images.length == 1) {
+            draw(images[0])
+        } else if (images.length > 1) {
+            animate();
         }
     }
     request.send();
@@ -37,12 +39,8 @@ var frame = 0;
 
 function animate() {
     frame++;
-    console.log('frame: ', frame);
     window.requestAnimationFrame(animate);
-    if (images.length > 0) {
-        draw(images[frame % images.length]);
-    }
+    draw(images[frame % images.length]);
 }
 
-animate();
 getData();
