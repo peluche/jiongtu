@@ -16,6 +16,6 @@ setup(
             'jiongtu/static/index.html',
             'jiongtu/static/main.js'
         ])
-    ]
+    ],
     keywords = [],
     classifiers = [])
