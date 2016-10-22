@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name = 'jiongtu',
     packages = ['jiongtu'],
-    version = '0.1',
+    version = '0.1.0',
     description = '囧',
     author = 'peluche',
     author_email = '',
