@@ -10,10 +10,6 @@ def start(images, width=None, height=None, port=None):
     def index():
         return redirect('/index.html')
     
-    @app.route('/<path:path>')
-    def send_js(path):
-        return send_from_directory('static', path)
-    
     @app.route("/i")
     def image():
         return jsonify(images=images, width=width, height=height)

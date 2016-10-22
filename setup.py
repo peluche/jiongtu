@@ -10,12 +10,6 @@ setup(
     url = 'https://github.com/peluche/jiongtu',
     download_url = 'https://github.com/peluche/jiongtu/tarball/0.1',
     install_requires = ['flask'],
-    data_files = [
-        ('jiongtu/static', [
-            'jiongtu/static/favicon.ico',
-            'jiongtu/static/index.html',
-            'jiongtu/static/main.js'
-        ])
-    ],
+    include_package_data = True,
     keywords = [],
     classifiers = [])
