@@ -3,14 +3,13 @@ var ctx = canvas.getContext('2d');
 
 function create_image(pixels) {
     // pixels are (x, y, r, g, b)
-    var w = 100, h = 100;
-    var imagedata = ctx.createImageData(w, h);
+    var imagedata = ctx.createImageData(width, height);
     pixels.forEach(function(pixel) {
         var x = pixel[0], y = pixel[1];
-        imagedata.data[((w * y) + x) * 4] = pixel[2];
-        imagedata.data[((w * y) + x) * 4 + 1] = pixel[3];
-        imagedata.data[((w * y) + x) * 4 + 2] = pixel[4];
-        imagedata.data[((w * y) + x) * 4 + 3] = 255;
+        imagedata.data[((width * y) + x) * 4] = pixel[2];
+        imagedata.data[((width * y) + x) * 4 + 1] = pixel[3];
+        imagedata.data[((width * y) + x) * 4 + 2] = pixel[4];
+        imagedata.data[((width * y) + x) * 4 + 3] = 255;
     });
     return imagedata;
 }
@@ -24,9 +23,11 @@ function getData() {
     request.open('GET', '/i', true);
     request.onload = function() {
         var response = JSON.parse(request.responseText);
+        width = response['width'];
+        height = response['height'];
         images = response['images'];
         if (images.length == 1) {
-            draw(images[0])
+            draw(images[0], width, height)
         } else if (images.length > 1) {
             animate();
         }
@@ -34,13 +35,11 @@ function getData() {
     request.send();
 }
 
-var images = []
-var frame = 0;
-
 function animate() {
     frame++;
     window.requestAnimationFrame(animate);
     draw(images[frame % images.length]);
 }
 
+var frame = 0, width = 0, height = 0, images = [];
 getData();
