@@ -18,4 +18,4 @@ def start(images, width=None, height=None, port=None):
 
 if __name__ == '__main__':
     from random import randrange
-    start([[(randrange(5), randrange(5), 0, 0, 0)] for _ in range(1000)])
+    start([[(randrange(20), randrange(20), 0, 0, 0)] for _ in range(1000)])
