@@ -24,7 +24,7 @@ function getData() {
     request.open('GET', '/i', true);
     request.onload = function() {
         var response = JSON.parse(request.responseText);
-        var images = response['images'];
+        images = response['images'];
         if (images.length > 0) {
             draw(images[0]);
         }
@@ -32,4 +32,17 @@ function getData() {
     request.send();
 }
 
+var images = []
+var frame = 0;
+
+function animate() {
+    frame++;
+    console.log('frame: ', frame);
+    window.requestAnimationFrame(animate);
+    if (images.length > 0) {
+        draw(images[frame % images.length]);
+    }
+}
+
+animate();
 getData();
