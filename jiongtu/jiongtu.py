@@ -13,6 +13,8 @@ def start(images, options=None):
         options['zoom'] = 1
     if 'slow' not in options:
         options['slow'] = 1
+    if 'loop' not in options:
+        options['loop'] = True
 
     app = Flask(__name__, static_url_path='')
     

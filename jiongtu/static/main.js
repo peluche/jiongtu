@@ -47,6 +47,9 @@ function getData() {
 }
 
 function animate() {
+    if (!options['loop'] && frame / options['slow'] >= images.length) {
+        return ;
+    }
     window.requestAnimationFrame(animate);
     if (frame % options['slow'] == 0) {
         draw(images[(frame / options['slow']) % images.length]);
