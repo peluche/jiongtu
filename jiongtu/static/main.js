@@ -47,10 +47,12 @@ function getData() {
 }
 
 function animate() {
-    frame++;
     window.requestAnimationFrame(animate);
-    draw(images[frame % images.length]);
-}
+    if (frame % options['slow'] == 0) {
+        draw(images[(frame / options['slow']) % images.length]);
+    }
+   frame++;
+ }
 
 var frame = 0, options = {}, images = [];
 getData();

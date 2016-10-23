@@ -11,8 +11,9 @@ def start(images, options=None):
         options['port'] = None
     if 'zoom' not in options:
         options['zoom'] = 1
+    if 'slow' not in options:
+        options['slow'] = 1
 
-        
     app = Flask(__name__, static_url_path='')
     
     @app.route("/")
@@ -23,7 +24,7 @@ def start(images, options=None):
     def image():
         return jsonify(images=images, options=options)
     
-    app.run(port=options['port'])
+    app.run(port=options['port'], debug=True)
 
 if __name__ == '__main__':
     from random import randrange
