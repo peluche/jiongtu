@@ -28,6 +28,10 @@ function draw(pixels) {
     ctx.putImageData(create_image(pixels), 0, 0);
 }
 
+function to_color(color) {
+    return 'rgb(' + color[0] + ',' + color[1] + ',' + color[2] + ')';
+}
+
 function getData() {
     var request = new XMLHttpRequest();
     request.open('GET', '/i', true);
@@ -37,6 +41,7 @@ function getData() {
         images = response['images'];
         canvas.width = options['width'] * options['zoom'];
         canvas.height = options['height'] * options['zoom'];
+        canvas.style.backgroundColor = to_color(options['background']);
         if (images.length == 1) {
             draw(images[0], options['width'], options['height'])
         } else if (images.length > 1) {

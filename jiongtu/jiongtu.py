@@ -15,6 +15,8 @@ def start(images, options=None):
         options['slow'] = 1
     if 'loop' not in options:
         options['loop'] = True
+    if 'background' not in options:
+        options['background'] = (255, 255, 255)
 
     app = Flask(__name__, static_url_path='')
     
